@@ -1,26 +1,7 @@
-### Use Type Inferred Context
-
-Use compiler inferred context to write shorter, clear code.  (Also see [Type Inference](#type-inference).)
-
-**Preferred**:
-```swift
-let selector = #selector(viewDidLoad)
-view.backgroundColor = .red
-let toView = context.view(forKey: .to)
-let view = UIView(frame: .zero)
-```
-
-**Not Preferred**:
-```swift
-let selector = #selector(ViewController.viewDidLoad)
-view.backgroundColor = UIColor.red
-let toView = context.view(forKey: UITransitionContextViewKey.to)
-let view = UIView(frame: CGRect.zero)
-```
-
 ## Code Organization
 
-Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
+Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a 
+`// MARK: -` comment to keep things well-organized.
 
 ### Protocol Conformance
 
@@ -115,6 +96,26 @@ var deviceModels: [String]
 ```
 import UIKit
 var deviceModels: [String]
+```
+
+### Use Type Inferred Context
+
+Use compiler inferred context to write shorter, clear code.
+
+**Preferred**:
+```swift
+let selector = #selector(viewDidLoad)
+view.backgroundColor = .red
+let toView = context.view(forKey: .to)
+let view = UIView(frame: .zero)
+```
+
+**Not Preferred**:
+```swift
+let selector = #selector(ViewController.viewDidLoad)
+view.backgroundColor = UIColor.red
+let toView = context.view(forKey: UITransitionContextViewKey.to)
+let view = UIView(frame: CGRect.zero)
 ```
 
 ## Spacing
