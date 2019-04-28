@@ -160,7 +160,9 @@ else {
 **Preferred**:
 ```swift
 class TestDatabase: Database {
+
     var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
+    
 }
 ```
 
@@ -254,11 +256,9 @@ Extend object lifetime using the `[weak self]` and `guard let self = self else {
 **Preferred**
 ```swift
 resource.request().onComplete { [weak self] response in
-    guard let self = self else {
-    return
-}
-let model = self.updateModel(response)
-self.updateUI(model)
+    guard let self = self else { return }
+    let model = self.updateModel(response)
+    self.updateUI(model)
 }
 ```
 
@@ -284,7 +284,9 @@ Use access control as the leading property specifier. The only things that shoul
 private let message = "Great Scott!"
 
 class TimeMachine {  
+
     private dynamic lazy var fluxCapacitor = FluxCapacitor()
+    
 }
 ```
 
