@@ -235,11 +235,11 @@ Consider using lazy initialization for finer grained control over object lifetim
 lazy var locationManager = makeLocationManager()
 
 private func makeLocationManager() -> CLLocationManager {
-let manager = CLLocationManager()
-manager.desiredAccuracy = kCLLocationAccuracyBest
-manager.delegate = self
-manager.requestAlwaysAuthorization()
-return manager
+    let manager = CLLocationManager()
+    manager.desiredAccuracy = kCLLocationAccuracyBest
+    manager.delegate = self
+    manager.requestAlwaysAuthorization()
+    return manager
 }
 ```
 
