@@ -1,6 +1,6 @@
 ## Code Organization
 
-Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a 
+Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a   
 `// MARK: -` comment to keep things well-organized.
 
 ### Protocol Conformance
@@ -10,24 +10,24 @@ In particular, when adding protocol conformance to a model, prefer adding a sepa
 **Preferred**:
 ```swift
 class MyViewController: UIViewController {
-// class stuff here
+    // class stuff here
 }
 
 // MARK: - UITableViewDataSource
 extension MyViewController: UITableViewDataSource {
-// table view data source methods
+    // table view data source methods
 }
 
 // MARK: - UIScrollViewDelegate
 extension MyViewController: UIScrollViewDelegate {
-// scroll view delegate methods
+    // scroll view delegate methods
 }
 ```
 
 **Not Preferred**:
 ```swift
 class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
-// all methods
+    // all methods
 }
 ```
 
@@ -44,7 +44,7 @@ Aspirational methods not directly associated with the tutorial whose implementat
 **Preferred**:
 ```swift
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-return Database.contacts.count
+    return Database.contacts.count
 }
 ```
 
@@ -52,17 +52,17 @@ return Database.contacts.count
 ```swift
 override func didReceiveMemoryWarning() {
 super.didReceiveMemoryWarning()
-// Dispose of any resources that can be recreated.
+    // Dispose of any resources that can be recreated.
 }
 
 override func numberOfSections(in tableView: UITableView) -> Int {
-// #warning Incomplete implementation, return the number of sections
-return 1
+    // #warning Incomplete implementation, return the number of sections
+    return 1
 }
 
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-// #warning Incomplete implementation, return the number of rows
-return Database.contacts.count
+    // #warning Incomplete implementation, return the number of rows
+    return Database.contacts.count
 }
 
 ```
@@ -130,9 +130,9 @@ let view = UIView(frame: CGRect.zero)
 **Preferred**:
 ```swift
 if user.isHappy {
-// Do something
+    // Do something
 } else {
-// Do something else
+    // Do something else
 }
 ```
 
@@ -140,10 +140,10 @@ if user.isHappy {
 ```swift
 if user.isHappy
 {
-// Do something
+    // Do something
 }
 else {
-// Do something else
+    // Do something else
 }
 ```
 
@@ -156,14 +156,14 @@ else {
 **Preferred**:
 ```swift
 class TestDatabase: Database {
-var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
+    var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
 }
 ```
 
 **Not Preferred**:
 ```swift
 class TestDatabase : Database {
-var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
+    var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
 
@@ -174,26 +174,26 @@ Use trailing closure syntax only if there's a single closure expression paramete
 **Preferred**:
 ```swift
 UIView.animate(withDuration: 1.0) {
-self.myView.alpha = 0
+    self.myView.alpha = 0
 }
 
 UIView.animate(withDuration: 1.0, animations: {
-self.myView.alpha = 0
+    self.myView.alpha = 0
 }, completion: { finished in
-self.myView.removeFromSuperview()
+    self.myView.removeFromSuperview()
 })
 ```
 
 **Not Preferred**:
 ```swift
 UIView.animate(withDuration: 1.0, animations: {
-self.myView.alpha = 0
+    self.myView.alpha = 0
 })
 
 UIView.animate(withDuration: 1.0, animations: {
-self.myView.alpha = 0
+    self.myView.alpha = 0
 }) { f in
-self.myView.removeFromSuperview()
+    self.myView.removeFromSuperview()
 }
 ```
 
@@ -250,8 +250,8 @@ Extend object lifetime using the `[weak self]` and `guard let self = self else {
 **Preferred**
 ```swift
 resource.request().onComplete { [weak self] response in
-guard let self = self else {
-return
+    guard let self = self else {
+    return
 }
 let model = self.updateModel(response)
 self.updateUI(model)
@@ -262,8 +262,8 @@ self.updateUI(model)
 ```swift
 // might crash if self is released before response returns
 resource.request().onComplete { [unowned self] response in
-let model = self.updateModel(response)
-self.updateUI(model)
+    let model = self.updateModel(response)
+    self.updateUI(model)
 }
 ```
 
@@ -280,7 +280,7 @@ Use access control as the leading property specifier. The only things that shoul
 private let message = "Great Scott!"
 
 class TimeMachine {  
-private dynamic lazy var fluxCapacitor = FluxCapacitor()
+    private dynamic lazy var fluxCapacitor = FluxCapacitor()
 }
 ```
 
@@ -289,7 +289,7 @@ private dynamic lazy var fluxCapacitor = FluxCapacitor()
 fileprivate let message = "Great Scott!"
 
 class TimeMachine {  
-lazy dynamic private var fluxCapacitor = FluxCapacitor()
+    lazy dynamic private var fluxCapacitor = FluxCapacitor()
 }
 ```
 
@@ -300,14 +300,14 @@ Parentheses around conditionals are not required and should be omitted.
 **Preferred**:
 ```swift
 if name == "Hello" {
-print("World")
+    print("World")
 }
 ```
 
 **Not Preferred**:
 ```swift
 if (name == "Hello") {
-print("World")
+    print("World")
 }
 ```
 In larger expressions, optional parentheses can sometimes make code read more clearly.
